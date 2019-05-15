@@ -122,6 +122,7 @@ public struct PVTimingFunction {
                   duration: PVTimingFunction.defaultDuration)
     }
     
+    @available(iOS 10.0, *)
     public init(timingParameters: UICubicTimingParameters) {
         self.init(controlPoint1: timingParameters.controlPoint1,
                   controlPoint2: timingParameters.controlPoint2

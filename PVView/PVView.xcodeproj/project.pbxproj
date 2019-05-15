@@ -8,40 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		19FD6150228C759100A6728C /* PVView.h in Headers */ = {isa = PBXBuildFile; fileRef = 19FD614E228C759100A6728C /* PVView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19FD6166228C764600A6728C /* PVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6156228C764600A6728C /* PVItem.swift */; };
-		19FD6167228C764600A6728C /* PVTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6158228C764600A6728C /* PVTimingFunction.swift */; };
-		19FD6168228C764600A6728C /* PVTimingFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6159228C764600A6728C /* PVTimingFunctionType.swift */; };
-		19FD6169228C764600A6728C /* PVActionOpacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD615B228C764600A6728C /* PVActionOpacity.swift */; };
-		19FD616A228C764600A6728C /* PVActionFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD615C228C764600A6728C /* PVActionFrame.swift */; };
-		19FD616B228C764600A6728C /* PVActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD615D228C764600A6728C /* PVActionGroup.swift */; };
-		19FD616C228C764600A6728C /* PVActionMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD615E228C764600A6728C /* PVActionMove.swift */; };
-		19FD616D228C764600A6728C /* PVAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD615F228C764600A6728C /* PVAction.swift */; };
-		19FD616E228C764600A6728C /* PVActionScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6160228C764600A6728C /* PVActionScale.swift */; };
-		19FD616F228C764600A6728C /* PVActionSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6161228C764600A6728C /* PVActionSize.swift */; };
-		19FD6170228C764600A6728C /* PVActionRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6162228C764600A6728C /* PVActionRotate.swift */; };
-		19FD6171228C764600A6728C /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6163228C764600A6728C /* Math.swift */; };
-		19FD6172228C764600A6728C /* PVViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6164228C764600A6728C /* PVViewDelegate.swift */; };
-		19FD6173228C764600A6728C /* PVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6165228C764600A6728C /* PVView.swift */; };
+		19FD6182228C7C5000A6728C /* PVViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6174228C7C4F00A6728C /* PVViewDelegate.swift */; };
+		19FD6183228C7C5000A6728C /* PVAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6175228C7C4F00A6728C /* PVAction.swift */; };
+		19FD6184228C7C5000A6728C /* PVActionRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6176228C7C4F00A6728C /* PVActionRotate.swift */; };
+		19FD6185228C7C5000A6728C /* PVActionScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6177228C7C4F00A6728C /* PVActionScale.swift */; };
+		19FD6186228C7C5000A6728C /* PVActionMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6178228C7C4F00A6728C /* PVActionMove.swift */; };
+		19FD6187228C7C5000A6728C /* PVActionOpacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6179228C7C4F00A6728C /* PVActionOpacity.swift */; };
+		19FD6188228C7C5000A6728C /* PVTimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617A228C7C4F00A6728C /* PVTimingFunction.swift */; };
+		19FD6189228C7C5000A6728C /* PVActionFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617B228C7C5000A6728C /* PVActionFrame.swift */; };
+		19FD618A228C7C5000A6728C /* PVActionSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617C228C7C5000A6728C /* PVActionSize.swift */; };
+		19FD618B228C7C5000A6728C /* PVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617D228C7C5000A6728C /* PVItem.swift */; };
+		19FD618C228C7C5000A6728C /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617E228C7C5000A6728C /* Math.swift */; };
+		19FD618D228C7C5000A6728C /* PVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD617F228C7C5000A6728C /* PVView.swift */; };
+		19FD618E228C7C5000A6728C /* PVActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6180228C7C5000A6728C /* PVActionGroup.swift */; };
+		19FD618F228C7C5000A6728C /* PVTimingFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD6181228C7C5000A6728C /* PVTimingFunctionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19FD614B228C759100A6728C /* PVView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PVView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FD614E228C759100A6728C /* PVView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVView.h; sourceTree = "<group>"; };
 		19FD614F228C759100A6728C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19FD6156228C764600A6728C /* PVItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVItem.swift; sourceTree = "<group>"; };
-		19FD6158228C764600A6728C /* PVTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVTimingFunction.swift; sourceTree = "<group>"; };
-		19FD6159228C764600A6728C /* PVTimingFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVTimingFunctionType.swift; sourceTree = "<group>"; };
-		19FD615B228C764600A6728C /* PVActionOpacity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionOpacity.swift; sourceTree = "<group>"; };
-		19FD615C228C764600A6728C /* PVActionFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionFrame.swift; sourceTree = "<group>"; };
-		19FD615D228C764600A6728C /* PVActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionGroup.swift; sourceTree = "<group>"; };
-		19FD615E228C764600A6728C /* PVActionMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionMove.swift; sourceTree = "<group>"; };
-		19FD615F228C764600A6728C /* PVAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVAction.swift; sourceTree = "<group>"; };
-		19FD6160228C764600A6728C /* PVActionScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionScale.swift; sourceTree = "<group>"; };
-		19FD6161228C764600A6728C /* PVActionSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionSize.swift; sourceTree = "<group>"; };
-		19FD6162228C764600A6728C /* PVActionRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionRotate.swift; sourceTree = "<group>"; };
-		19FD6163228C764600A6728C /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		19FD6164228C764600A6728C /* PVViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVViewDelegate.swift; sourceTree = "<group>"; };
-		19FD6165228C764600A6728C /* PVView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVView.swift; sourceTree = "<group>"; };
+		19FD6174228C7C4F00A6728C /* PVViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVViewDelegate.swift; sourceTree = "<group>"; };
+		19FD6175228C7C4F00A6728C /* PVAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVAction.swift; sourceTree = "<group>"; };
+		19FD6176228C7C4F00A6728C /* PVActionRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionRotate.swift; sourceTree = "<group>"; };
+		19FD6177228C7C4F00A6728C /* PVActionScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionScale.swift; sourceTree = "<group>"; };
+		19FD6178228C7C4F00A6728C /* PVActionMove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionMove.swift; sourceTree = "<group>"; };
+		19FD6179228C7C4F00A6728C /* PVActionOpacity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionOpacity.swift; sourceTree = "<group>"; };
+		19FD617A228C7C4F00A6728C /* PVTimingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVTimingFunction.swift; sourceTree = "<group>"; };
+		19FD617B228C7C5000A6728C /* PVActionFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionFrame.swift; sourceTree = "<group>"; };
+		19FD617C228C7C5000A6728C /* PVActionSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionSize.swift; sourceTree = "<group>"; };
+		19FD617D228C7C5000A6728C /* PVItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVItem.swift; sourceTree = "<group>"; };
+		19FD617E228C7C5000A6728C /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		19FD617F228C7C5000A6728C /* PVView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVView.swift; sourceTree = "<group>"; };
+		19FD6180228C7C5000A6728C /* PVActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionGroup.swift; sourceTree = "<group>"; };
+		19FD6181228C7C5000A6728C /* PVTimingFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVTimingFunctionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,38 +76,22 @@
 			children = (
 				19FD614E228C759100A6728C /* PVView.h */,
 				19FD614F228C759100A6728C /* Info.plist */,
-				19FD6163228C764600A6728C /* Math.swift */,
-				19FD6164228C764600A6728C /* PVViewDelegate.swift */,
-				19FD6165228C764600A6728C /* PVView.swift */,
-				19FD6156228C764600A6728C /* PVItem.swift */,
-				19FD615A228C764600A6728C /* Actions */,
-				19FD6157228C764600A6728C /* TimingFunction */,
+				19FD617E228C7C5000A6728C /* Math.swift */,
+				19FD6175228C7C4F00A6728C /* PVAction.swift */,
+				19FD617B228C7C5000A6728C /* PVActionFrame.swift */,
+				19FD6180228C7C5000A6728C /* PVActionGroup.swift */,
+				19FD6178228C7C4F00A6728C /* PVActionMove.swift */,
+				19FD6179228C7C4F00A6728C /* PVActionOpacity.swift */,
+				19FD6176228C7C4F00A6728C /* PVActionRotate.swift */,
+				19FD6177228C7C4F00A6728C /* PVActionScale.swift */,
+				19FD617C228C7C5000A6728C /* PVActionSize.swift */,
+				19FD617D228C7C5000A6728C /* PVItem.swift */,
+				19FD617A228C7C4F00A6728C /* PVTimingFunction.swift */,
+				19FD6181228C7C5000A6728C /* PVTimingFunctionType.swift */,
+				19FD617F228C7C5000A6728C /* PVView.swift */,
+				19FD6174228C7C4F00A6728C /* PVViewDelegate.swift */,
 			);
 			path = PVView;
-			sourceTree = "<group>";
-		};
-		19FD6157228C764600A6728C /* TimingFunction */ = {
-			isa = PBXGroup;
-			children = (
-				19FD6158228C764600A6728C /* PVTimingFunction.swift */,
-				19FD6159228C764600A6728C /* PVTimingFunctionType.swift */,
-			);
-			path = TimingFunction;
-			sourceTree = "<group>";
-		};
-		19FD615A228C764600A6728C /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				19FD615F228C764600A6728C /* PVAction.swift */,
-				19FD615C228C764600A6728C /* PVActionFrame.swift */,
-				19FD615D228C764600A6728C /* PVActionGroup.swift */,
-				19FD615E228C764600A6728C /* PVActionMove.swift */,
-				19FD615B228C764600A6728C /* PVActionOpacity.swift */,
-				19FD6162228C764600A6728C /* PVActionRotate.swift */,
-				19FD6160228C764600A6728C /* PVActionScale.swift */,
-				19FD6161228C764600A6728C /* PVActionSize.swift */,
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,20 +173,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19FD6166228C764600A6728C /* PVItem.swift in Sources */,
-				19FD616B228C764600A6728C /* PVActionGroup.swift in Sources */,
-				19FD6169228C764600A6728C /* PVActionOpacity.swift in Sources */,
-				19FD6168228C764600A6728C /* PVTimingFunctionType.swift in Sources */,
-				19FD6170228C764600A6728C /* PVActionRotate.swift in Sources */,
-				19FD616C228C764600A6728C /* PVActionMove.swift in Sources */,
-				19FD616D228C764600A6728C /* PVAction.swift in Sources */,
-				19FD616F228C764600A6728C /* PVActionSize.swift in Sources */,
-				19FD616A228C764600A6728C /* PVActionFrame.swift in Sources */,
-				19FD6167228C764600A6728C /* PVTimingFunction.swift in Sources */,
-				19FD6173228C764600A6728C /* PVView.swift in Sources */,
-				19FD6172228C764600A6728C /* PVViewDelegate.swift in Sources */,
-				19FD616E228C764600A6728C /* PVActionScale.swift in Sources */,
-				19FD6171228C764600A6728C /* Math.swift in Sources */,
+				19FD618D228C7C5000A6728C /* PVView.swift in Sources */,
+				19FD618B228C7C5000A6728C /* PVItem.swift in Sources */,
+				19FD6182228C7C5000A6728C /* PVViewDelegate.swift in Sources */,
+				19FD618C228C7C5000A6728C /* Math.swift in Sources */,
+				19FD6183228C7C5000A6728C /* PVAction.swift in Sources */,
+				19FD6185228C7C5000A6728C /* PVActionScale.swift in Sources */,
+				19FD618E228C7C5000A6728C /* PVActionGroup.swift in Sources */,
+				19FD618F228C7C5000A6728C /* PVTimingFunctionType.swift in Sources */,
+				19FD618A228C7C5000A6728C /* PVActionSize.swift in Sources */,
+				19FD6184228C7C5000A6728C /* PVActionRotate.swift in Sources */,
+				19FD6186228C7C5000A6728C /* PVActionMove.swift in Sources */,
+				19FD6189228C7C5000A6728C /* PVActionFrame.swift in Sources */,
+				19FD6187228C7C5000A6728C /* PVActionOpacity.swift in Sources */,
+				19FD6188228C7C5000A6728C /* PVTimingFunction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +328,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PVView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,6 +356,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PVView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
