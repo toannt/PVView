@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PVActionSize: PVAction {
+public final class PVActionSize: PVActionBasic {
     public let fromSize: PVSize
     public let toSize: PVSize
     
@@ -19,7 +19,7 @@ public class PVActionSize: PVAction {
         super.init()
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         guard let container = target.superview else { return }
         
         let from = container.convertSize(fromSize)
@@ -29,7 +29,7 @@ public class PVActionSize: PVAction {
         target.frame = CGRect(x: center.x - current.width / 2, y: center.y - current.height / 2, width: current.width, height: current.height)
     }
     
-    public func reverse() -> PVActionSize {
+    public override func reverse() -> PVActionSize {
         return PVActionSize(from: toSize, to: fromSize)
     }
     

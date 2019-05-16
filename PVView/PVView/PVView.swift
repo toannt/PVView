@@ -16,25 +16,22 @@ open class PVView: UIView {
         case vertical
     }
     
-    private typealias PVElement = (item: PVItem, actions: [PVAction])
-    
-    private let _scrollView = UIScrollView(frame: CGRect.zero)
+    public unowned var delegate: PVViewDelegate!
     public private(set) var direction = PVDirection.horizontal
     public private(set) var numberOfPages = 0
-    
-    public private(set) var currentPageIndex: Int?
-    private var elements = [PVElement]()
-    
-    private var allTargets = Set<UIView>()
-    
-    public unowned var delegate: PVViewDelegate!
-    
     public var runActionsAfterTransition = true
     public var isPagingEnabled = true {
         didSet {
             _scrollView.isPagingEnabled = isPagingEnabled
         }
     }
+    
+    private typealias PVElement = (item: PVItem, actions: [PVActionType])
+    private let _scrollView = UIScrollView(frame: CGRect.zero)
+    public private(set) var currentPageIndex: Int?
+    private var elements = [PVElement]()
+    private var allTargets = Set<UIView>()
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setups()
@@ -60,28 +57,15 @@ open class PVView: UIView {
         return elements.first(where: { $0.item.identifier == identifier})?.item
     }
     
+    public func actionsOnCurrentPage(forItemBy identifier: String) -> [PVActionType] {
+        return elements.first(where: { $0.item.identifier == identifier })?.actions ?? []
+    }
+    
     public func reload() {
         cleanUp()
         direction = delegate.direction(of: self)
         numberOfPages = delegate.numberOfPages(in: self)
         precondition(numberOfPages >= 0, "Number of pages in ParallaxView must be positive (now: \(numberOfPages))")
-        /*
-        let constraints = _scrollView.constraints.filter { ($0.firstItem === _scrollView.contentLayoutGuide && $0.secondItem === _scrollView.frameLayoutGuide) || ($0.secondItem === _scrollView.contentLayoutGuide && $0.firstItem === _scrollView.frameLayoutGuide) }
-        _scrollView.removeConstraints(constraints)
-        
-        switch scrollDirection {
-        case .horizontal:
-            NSLayoutConstraint.activate([_scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.topAnchor),
-                                         _scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.leadingAnchor),
-                                         _scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.bottomAnchor),
-                                         _scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.widthAnchor, multiplier: CGFloat(numberOfPages + 1))])
-        case .vertical:
-            NSLayoutConstraint.activate([_scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.topAnchor),
-                                         _scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.leadingAnchor),
-                                         _scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.trailingAnchor),
-                                         _scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: _scrollView.frameLayoutGuide.heightAnchor, multiplier: CGFloat(numberOfPages + 1))])
-        }
- */
         self.superview?.setNeedsLayout()
         self.superview?.layoutIfNeeded()
         switch direction {

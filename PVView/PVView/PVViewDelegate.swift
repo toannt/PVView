@@ -12,7 +12,7 @@ public protocol PVViewDelegate: AnyObject {
     //Required
     func numberOfPages(in parallaxView: PVView) -> Int
     func parallaxView(_ parallaxView: PVView, itemsOnPage pageIndex: Int) -> [PVItem]
-    func parallaxView(_ parallaxView: PVView, actionsOfItem item: PVItem, onPage pageIndex: Int) -> [PVAction]
+    func parallaxView(_ parallaxView: PVView, actionsOfItem item: PVItem, onPage pageIndex: Int) -> [PVActionType]
     
     //Optional
     func direction(of parallaxView: PVView) -> PVView.PVDirection

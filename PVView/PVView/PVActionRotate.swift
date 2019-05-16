@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PVActionRotate: PVAction {
+public final class PVActionRotate: PVActionBasic {
     public let keyPath: String
     public let fromValue: Double
     public let toValue: Double
@@ -33,12 +33,12 @@ public class PVActionRotate: PVAction {
         super.init()
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         let currentRotation = fromValue + (toValue - fromValue) * progress
         target.layer.setValue(currentRotation, forKeyPath: keyPath)
     }
     
-    public func reverse() -> PVActionRotate {
+    public override func reverse() -> PVActionRotate {
         return PVActionRotate(keyPath: keyPath, fromValue: toValue, toValue: fromValue)
     }
     

@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 
-public class PVActionGroup: PVAction {
-    public let actions: [PVAction]
-    public init(actions: [PVAction]) {
+public final class PVActionGroup: PVActionBasic {
+    public let actions: [PVActionBasic]
+    public init(actions: [PVActionBasic]) {
         self.actions = actions
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         self.actions.forEach { $0.step(progress, target: target) }
+    }
+    
+    public override func reverse() -> PVActionGroup {
+        return PVActionGroup(actions: actions.map { $0.reverse() })
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PVAction.swift
+//  PVActionBasic.swift
 //  ParallaxView
 //
 //  Created by Toan Nguyen on 5/10/19.
@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-open class PVAction {
+open class PVActionBasic: PVActionType {
     public var startOffset: Double = 0
     public var endOffset: Double = 1
     public var timingFunction: PVTimingFunctionType?
     
-    final internal func update(_ progress: Double, target: UIView) {
+    final public func update(_ progress: Double, target: UIView) {
         precondition(startOffset >= 0 && startOffset < endOffset && endOffset <= 1, "StartOffet must be less than EndOffset, and both must be in [0..1] range, Current: startOffset = \(startOffset), endOffset = \(endOffset)")
 
         let _offset = startOffset == 0 ? progress : max(progress - startOffset, 0) //Only allow bouncing at beginning of action if the action start at 0
@@ -24,8 +24,12 @@ open class PVAction {
         let evaluatedProgress = timingFunction?.evaluate(inRangeProgress) ?? inRangeProgress
         step(evaluatedProgress, target: target)
     }
-
+    
     open func step(_ progress: Double, target: UIView) {
-        print("To be implemented by subclasses!")
+        print("Need to be implemented by subclasses!")
+    }
+    
+    open func reverse() -> Self {
+        fatalError("Must be implemented by subclasses")
     }
 }

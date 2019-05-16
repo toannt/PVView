@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PVActionFade: PVAction {
+public final class PVActionFade: PVActionBasic {
     public let fromOpacity: Double
     public let toOpacity: Double
     public init(from fromOpacity: Double = 1,
@@ -19,12 +19,12 @@ public class PVActionFade: PVAction {
         super.init()
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         let currentOpacity = fromOpacity + (toOpacity - fromOpacity) * progress
         target.layer.opacity = Float(currentOpacity)
     }
-    
-    public func reverse() -> PVActionFade {
+
+    public override func reverse() -> PVActionFade {
         return PVActionFade(from: toOpacity, to: fromOpacity)
     }
     

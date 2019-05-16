@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PVActionMove: PVAction {
+public final class PVActionMove: PVActionBasic {
     public enum MoveType {
         case position //layer.position
         case translation //layer.transform.translation
@@ -40,7 +40,7 @@ public class PVActionMove: PVAction {
         super.init()
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         guard let container = target.superview else { return }
         
         let from = container.convertPoint(fromValue)
@@ -57,7 +57,7 @@ public class PVActionMove: PVAction {
         }
     }
     
-    public func reverse() -> PVActionMove {
+    public override func reverse() -> PVActionMove {
         return PVActionMove(from: toValue, to: fromValue, type: moveType)
     }
     

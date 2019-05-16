@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PVActionFrame: PVAction {
+public final class PVActionFrame: PVActionBasic {
     public let fromFrame: CGRect
     public let toFrame: CGRect
     public init(fromFrame: CGRect, toFrame: CGRect) {
@@ -17,14 +17,14 @@ public class PVActionFrame: PVAction {
         self.toFrame = toFrame
     }
     
-    override public func step(_ progress: Double, target: UIView) {
+    public override func step(_ progress: Double, target: UIView) {
         let origin = fromFrame.origin + (toFrame.origin - fromFrame.origin) * CGFloat(progress)
         let size = fromFrame.size + (toFrame.size - fromFrame.size) * CGFloat(progress)
         let frame = CGRect(origin: origin, size: size)
         target.frame = frame
     }
     
-    public func reverse() -> PVActionFrame {
+    public override func reverse() -> PVActionFrame {
         return PVActionFrame(fromFrame: toFrame, toFrame: fromFrame)
     }
     

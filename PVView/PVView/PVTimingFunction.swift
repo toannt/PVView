@@ -166,9 +166,6 @@ private struct ValueBezier {
     private let cy: Double
 
     internal init(controlPoint1: CGPoint, controlPoint2: CGPoint) {
-        // Calculate the polynomial coefficients, implicit first
-        // and last control points are (0,0) and (1,1).
-        
         cx = 3.0 * Double(controlPoint1.x)
         bx = 3.0 * Double(controlPoint2.x - controlPoint1.x) - cx
         ax = 1.0 - cx - bx

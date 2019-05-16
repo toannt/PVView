@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.2176812833, blue: 0.3688698012, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.2862730569, green: 0.8505314086, blue: 0.5361324761, alpha: 1)
         view.addSubview(parallaxView)
         NSLayoutConstraint.activate([parallaxView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      parallaxView.topAnchor.constraint(equalTo: view.topAnchor),

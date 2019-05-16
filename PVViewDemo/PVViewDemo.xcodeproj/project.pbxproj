@@ -85,7 +85,6 @@
 				E2E5BCC725CCDECDBB8DC6F7 /* Pods-PVViewDemo.debug.xcconfig */,
 				912DBBB8675A49D8CC1B998E /* Pods-PVViewDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -360,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZ58J23V22;
 				INFOPLIST_FILE = PVViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,6 +379,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZ58J23V22;
 				INFOPLIST_FILE = PVViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
