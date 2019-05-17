@@ -1,6 +1,6 @@
 //
-//  Math.swift
-//  ParallaxView
+//  Helper.swift
+//  PVView
 //
 //  Created by Toan Nguyen on 5/10/19.
 //  Copyright © 2019 TNT. All rights reserved.
@@ -30,8 +30,8 @@ public struct PVPoint {
 }
 
 public struct PVSize {
-    public let width: Double
-    public let height: Double
+    public var width: Double
+    public var height: Double
     public var isRelative: Bool
     
     public static var zero: PVSize {
@@ -63,18 +63,14 @@ public extension UIView {
     }
 }
 
-internal extension CGPoint {
-    func asPVPoint() -> PVPoint {
-        return PVPoint(x: Double(x), y: Double(y))
+public extension Sequence where Element == PVActionBasicType {
+    func reverseAll(with newParameters: PVParameters = .default) -> [Element] {
+        return self.map { $0.reverse(with: newParameters) }
     }
 }
 
-internal extension CGSize {
-    func asPVSize() -> PVSize {
-        return PVSize(width: Double(width), height: Double(height))
-    }
-}
 
+//MARK:- Math
 public func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }

@@ -1,6 +1,6 @@
 //
 //  PVTimingFunctionType.swift
-//  ParallaxView
+//  PVView
 //
 //  Created by Toan Nguyen on 5/10/19.
 //  Copyright © 2019 TNT. All rights reserved.

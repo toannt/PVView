@@ -1,6 +1,6 @@
 //
 //  PVActionSize.swift
-//  ParallaxView
+//  PVView
 //
 //  Created by Toan Nguyen on 5/15/19.
 //  Copyright © 2019 TNT. All rights reserved.
@@ -9,17 +9,18 @@
 import Foundation
 import UIKit
 
-public final class PVActionSize: PVActionBasic {
+public struct PVActionSize: PVActionBasicType {
+    public let parameters: PVParameters
     public let fromSize: PVSize
     public let toSize: PVSize
     
-    public init(from fromSize: PVSize, to toSize: PVSize) {
+    public init(from fromSize: PVSize, to toSize: PVSize, parameters: PVParameters = .default) {
         self.fromSize = fromSize
         self.toSize = toSize
-        super.init()
+        self.parameters = parameters
     }
     
-    public override func step(_ progress: Double, target: UIView) {
+    public func step(_ progress: Double, target: UIView) {
         guard let container = target.superview else { return }
         
         let from = container.convertSize(fromSize)
@@ -29,11 +30,15 @@ public final class PVActionSize: PVActionBasic {
         target.frame = CGRect(x: center.x - current.width / 2, y: center.y - current.height / 2, width: current.width, height: current.height)
     }
     
-    public override func reverse() -> PVActionSize {
-        return PVActionSize(from: toSize, to: fromSize)
+    public func reverse(with newParameters: PVParameters = .default) -> PVActionSize {
+        return PVActionSize(from: toSize, to: fromSize, parameters: newParameters)
     }
     
-    public func continueChange(to newSize: PVSize) -> PVActionSize {
-        return PVActionSize(from: toSize, to: newSize)
+    public func copy(with newParameters: PVParameters = .default) -> PVActionSize {
+        return PVActionSize(from: fromSize, to: toSize, parameters: newParameters)
+    }
+    
+    public func continueChange(to newSize: PVSize, newParameters: PVParameters = .default) -> PVActionSize {
+        return PVActionSize(from: toSize, to: newSize, parameters: newParameters)
     }
 }

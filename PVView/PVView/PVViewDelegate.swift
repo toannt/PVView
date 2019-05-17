@@ -1,6 +1,6 @@
 //
 //  PVViewDelegate.swift
-//  ParallaxView
+//  PVView
 //
 //  Created by Toan Nguyen on 5/15/19.
 //  Copyright © 2019 TNT. All rights reserved.

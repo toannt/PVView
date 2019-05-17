@@ -1,6 +1,6 @@
 //
 //  PVActionScale.swift
-//  ParallaxView
+//  PVView
 //
 //  Created by Toan Nguyen on 5/10/19.
 //  Copyright © 2019 TNT. All rights reserved.
@@ -9,40 +9,45 @@
 import Foundation
 import UIKit
 
-public final class PVActionScale: PVActionBasic {
+public struct PVActionScale: PVActionBasicType {
+    public let parameters: PVParameters
     public let keyPath: String
     public let fromValue: Double
     public let toValue: Double
     
-    public convenience init(from: Double = 1, to: Double) {
-        self.init(keyPath: "transform.scale", fromValue: from, toValue: to)
+    public init(from: Double = 1, to: Double = 1, parameters: PVParameters = .default) {
+        self.init(keyPath: "transform.scale", fromValue: from, toValue: to, parameters: parameters)
     }
     
-    public convenience init(fromX: Double = 1, toX: Double) {
-        self.init(keyPath: "transform.scale.x", fromValue: fromX, toValue: toX)
+    public init(fromX: Double = 1, toX: Double = 1, parameters: PVParameters = .default) {
+        self.init(keyPath: "transform.scale.x", fromValue: fromX, toValue: toX, parameters: parameters)
     }
     
-    public convenience init(fromY: Double = 1, toY: Double) {
-        self.init(keyPath: "transform.scale.y", fromValue: fromY, toValue: toY)
+    public init(fromY: Double = 1, toY: Double = 1, parameters: PVParameters = .default) {
+        self.init(keyPath: "transform.scale.y", fromValue: fromY, toValue: toY, parameters: parameters)
     }
     
-    private init(keyPath: String, fromValue: Double, toValue: Double) {
+    private init(keyPath: String, fromValue: Double, toValue: Double, parameters: PVParameters) {
         self.keyPath = keyPath
         self.fromValue = fromValue
         self.toValue = toValue
-        super.init()
+        self.parameters = parameters
     }
     
-    public override func step(_ progress: Double, target: UIView) {
+    public func step(_ progress: Double, target: UIView) {
         let scale = fromValue + (toValue - fromValue) * progress
         target.layer.setValue(scale, forKeyPath: keyPath)
     }
 
-    public override func reverse() -> PVActionScale {
-        return PVActionScale(keyPath: keyPath, fromValue: toValue, toValue: fromValue)
+    public func reverse(with newParameters: PVParameters = .default) -> PVActionScale {
+        return PVActionScale(keyPath: keyPath, fromValue: toValue, toValue: fromValue, parameters: newParameters)
     }
     
-    public func continueScale(to newValue: Double) -> PVActionScale {
-        return PVActionScale(keyPath: keyPath, fromValue: toValue, toValue: fromValue)
+    public func copy(with newParameters: PVParameters = .default) -> PVActionScale {
+        return PVActionScale(keyPath: keyPath, fromValue: fromValue, toValue: toValue, parameters: newParameters)
+    }
+    
+    public func continueScale(to newValue: Double, newParameters: PVParameters = .default) -> PVActionScale {
+        return PVActionScale(keyPath: keyPath, fromValue: toValue, toValue: newValue, parameters: newParameters)
     }
 }

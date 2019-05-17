@@ -19,6 +19,7 @@ open class PVView: UIView {
     public unowned var delegate: PVViewDelegate!
     public private(set) var direction = PVDirection.horizontal
     public private(set) var numberOfPages = 0
+    public private(set) var currentPageIndex: Int?
     public var runActionsAfterTransition = true
     public var isPagingEnabled = true {
         didSet {
@@ -28,7 +29,6 @@ open class PVView: UIView {
     
     private typealias PVElement = (item: PVItem, actions: [PVActionType])
     private let _scrollView = UIScrollView(frame: CGRect.zero)
-    public private(set) var currentPageIndex: Int?
     private var elements = [PVElement]()
     private var allTargets = Set<UIView>()
     
@@ -65,7 +65,7 @@ open class PVView: UIView {
         cleanUp()
         direction = delegate.direction(of: self)
         numberOfPages = delegate.numberOfPages(in: self)
-        precondition(numberOfPages >= 0, "Number of pages in ParallaxView must be positive (now: \(numberOfPages))")
+        precondition(numberOfPages >= 0, "Number of pages in PVView must be positive (current: \(numberOfPages))")
         self.superview?.setNeedsLayout()
         self.superview?.layoutIfNeeded()
         switch direction {

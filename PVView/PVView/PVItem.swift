@@ -1,6 +1,6 @@
 //
 //  PVItem.swift
-//  ParallaxView
+//  PVView
 //
 //  Created by Toan Nguyen on 5/10/19.
 //  Copyright © 2019 TNT. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class PVItem {
+public struct PVItem {
     public let identifier: String
     public let target: UIView
     public weak var container: UIView?
