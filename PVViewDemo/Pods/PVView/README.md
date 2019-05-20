@@ -1,2 +1,0 @@
-# PVView
-ParallaxView swift

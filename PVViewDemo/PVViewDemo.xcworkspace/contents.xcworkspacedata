@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PVViewDemo.xcodeproj">
+      location = "group:../PVView/PVView.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "container:PVViewDemo.xcodeproj">
    </FileRef>
 </Workspace>

@@ -23,7 +23,7 @@ public struct PVActionGroup: PVActionBasicType {
     }
     
     public func reverse(with newParameters: PVParameters = .default) -> PVActionGroup {
-        return PVActionGroup(actions: actions.reverseAll(), parameters: newParameters)
+        return PVActionGroup(actions: actions.reversedActions(), parameters: newParameters)
     }
     
     public func copy(with newParameters: PVParameters = .default) -> PVActionGroup {

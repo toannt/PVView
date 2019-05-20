@@ -64,7 +64,13 @@ public extension UIView {
 }
 
 public extension Sequence where Element == PVActionBasicType {
-    func reverseAll(with newParameters: PVParameters = .default) -> [Element] {
+    func reversedActions(with newParameters: PVParameters = .default) -> [Element] {
+        return self.map { $0.reverse(with: newParameters) }
+    }
+}
+
+public extension Sequence where Element: PVActionBasicType {
+    func reversedActions(with newParameters: PVParameters = .default) -> [Element] {
         return self.map { $0.reverse(with: newParameters) }
     }
 }

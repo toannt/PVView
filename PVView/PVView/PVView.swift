@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 import QuartzCore
 
+private struct PVElement {
+    let identifier: String
+    let target: UIView
+    let container: UIView
+    let actions: [PVActionType]
+}
+
 open class PVView: UIView {
     public enum PVDirection {
         case horizontal
@@ -21,16 +28,11 @@ open class PVView: UIView {
     public private(set) var numberOfPages = 0
     public private(set) var currentPageIndex: Int?
     public var runActionsAfterTransition = true
-    public var isPagingEnabled = true {
-        didSet {
-            _scrollView.isPagingEnabled = isPagingEnabled
-        }
-    }
+    public var ignoreLastPage = true
+    public let scrollView = UIScrollView(frame: CGRect.zero)
     
-    private typealias PVElement = (item: PVItem, actions: [PVActionType])
-    private let _scrollView = UIScrollView(frame: CGRect.zero)
     private var elements = [PVElement]()
-    private var allTargets = Set<UIView>()
+    private var allTargets = [String: UIView]()
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,49 +45,64 @@ open class PVView: UIView {
     }
     
     private func setups() {
-        addSubview(_scrollView)
-        _scrollView.isPagingEnabled = true
-        _scrollView.delegate = self
-        _scrollView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([_scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                                     _scrollView.topAnchor.constraint(equalTo: self.topAnchor),
-                                     _scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                                     _scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
+        addSubview(scrollView)
+        scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                                     scrollView.topAnchor.constraint(equalTo: self.topAnchor),
+                                     scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                                     scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
     }
     
-    public func itemOnCurrentPage(by identifier: String) -> PVItem? {
-        return elements.first(where: { $0.item.identifier == identifier})?.item
+    public func viewForItem(by identifier: String) -> UIView? {
+        return allTargets[identifier]
     }
     
     public func actionsOnCurrentPage(forItemBy identifier: String) -> [PVActionType] {
-        return elements.first(where: { $0.item.identifier == identifier })?.actions ?? []
+        return elements.first(where: { $0.identifier == identifier })?.actions ?? []
     }
+    
+    public func next(animated: Bool = true) {
+        guard let currentPage = self.currentPageIndex, currentPage < numberOfPages - 1 else { return }
+        scroll(to: CGFloat(currentPage + 1) * pageSize(), animated: animated)
+    }
+    
+    public func back(animated: Bool = true) {
+        guard let currentPage = self.currentPageIndex, currentPage > 0 else { return }
+        scroll(to: CGFloat(currentPage - 1) * pageSize(), animated: animated)
+    }
+    
     
     public func reload() {
         cleanUp()
         direction = delegate.direction(of: self)
         numberOfPages = delegate.numberOfPages(in: self)
         precondition(numberOfPages >= 0, "Number of pages in PVView must be positive (current: \(numberOfPages))")
+        //TODO: Checking this one
         self.superview?.setNeedsLayout()
         self.superview?.layoutIfNeeded()
         switch direction {
         case .horizontal:
-            _scrollView.contentSize = CGSize(width: CGFloat(numberOfPages + 1) * _scrollView.frame.width, height: _scrollView.frame.height)
+            scrollView.contentSize = CGSize(width: CGFloat(numberOfPages) * scrollView.frame.width, height: scrollView.frame.height)
         case .vertical:
-            _scrollView.contentSize = CGSize(width: _scrollView.frame.width, height: CGFloat(numberOfPages + 1) * _scrollView.frame.height)
+            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(numberOfPages) * scrollView.frame.height)
         }
         
-        update(scrollOffset())
+        if scrollView.contentOffset == CGPoint.zero {
+            update(0)
+        } else {
+            scrollView.contentOffset = CGPoint.zero
+        }
     }
     
     private func cleanUp() {
         currentPageIndex = nil
         elements = []
-        _scrollView.contentOffset = CGPoint.zero
-        for view in allTargets {
+        for (_, view) in allTargets {
             view.removeFromSuperview()
         }
-        allTargets = []
+        allTargets = [:]
     }
     
     private func willBeginTransition(to pageIndex: Int) {
@@ -97,27 +114,47 @@ open class PVView: UIView {
     }
     
     private func startTransition(to pageIndex: Int) {
-        let items = delegate.parallaxView(self, itemsOnPage: pageIndex)
-        elements = items.map { ($0, delegate.parallaxView(self, actionsOfItem: $0, onPage: pageIndex)) }
-        currentPageIndex = pageIndex
+        defer {
+            currentPageIndex = pageIndex
+        }
         
-        for item in items {
-            let containerView = item.container ?? self
-            if item.target.superview !== containerView {
-                containerView.addSubview(item.target)
+        if ignoreLastPage && pageIndex == numberOfPages - 1 {
+            return
+        }
+        
+        let items = delegate.parallaxView(self, itemsOnPage: pageIndex)
+        elements = items.map { anItem in
+            let identifier = anItem.identifier
+            var target = allTargets[identifier]
+            if target == nil {
+                target = delegate.parallaxview(self, viewForItem: anItem)
+                allTargets[identifier] = target!
             }
-            allTargets.insert(item.target)
+            
+            let container = delegate.parallaxView(self, containerViewForItem: anItem, onPage: pageIndex) ?? self
+            
+            if target?.superview !== container {
+                container.addSubview(target!)
+            }
+            
+            container.bringSubviewToFront(target!)
+            
+            let actions = delegate.parallaxView(self, actionsOfItem: anItem, onPage: pageIndex)
+            
+            return PVElement(identifier: identifier,
+                             target: target!,
+                             container: container,
+                             actions: actions)
         }
     }
     
     private func didEndTransition(from previousPageIndex: Int?) {
-        elements.forEach { $0.item.target.superview?.bringSubviewToFront($0.item.target) }
         delegate.parallaxView(self, didEndTransitionFrom: previousPageIndex)
     }
 
     private func updateActions(_ progress: Double) {
         for anElement in self.elements {
-            anElement.actions.forEach { $0.update(progress, target: anElement.item.target) }
+            anElement.actions.forEach { $0.update(progress, target: anElement.target) }
         }
     }
     
@@ -138,17 +175,23 @@ open class PVView: UIView {
             }
         }
         
-        let pageOffset = offset - pageSize * CGFloat(pageIndex)
+        let interactivePageIndex = (ignoreLastPage && pageIndex == numberOfPages - 1) ? max(numberOfPages - 2, 0) : pageIndex
+        let pageOffset = offset - pageSize * CGFloat(interactivePageIndex)
         let pageProgress = Double(pageOffset / pageSize)
         updateActions(pageProgress)
     }
     
     private func scrollOffset() -> CGFloat {
-        return direction == .horizontal ? _scrollView.contentOffset.x : _scrollView.contentOffset.y
+        return direction == .horizontal ? scrollView.contentOffset.x : scrollView.contentOffset.y
     }
     
     private func pageSize() -> CGFloat {
-        return direction == .horizontal ? _scrollView.frame.width : _scrollView.frame.height
+        return direction == .horizontal ? scrollView.bounds.width : scrollView.bounds.height
+    }
+    
+    private func scroll(to newOffset: CGFloat, animated: Bool) {
+        let contentOffset = direction == .horizontal ? CGPoint(x: newOffset, y: 0) : CGPoint(x: 0, y: newOffset)
+        scrollView.setContentOffset(contentOffset, animated: animated)
     }
 }
 

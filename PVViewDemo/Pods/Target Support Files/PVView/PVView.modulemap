@@ -1,6 +1,0 @@
-framework module PVView {
-  umbrella header "PVView-umbrella.h"
-
-  export *
-  module * { export * }
-}
