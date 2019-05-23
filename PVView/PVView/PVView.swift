@@ -29,7 +29,7 @@ open class PVView: UIView {
     public private(set) var currentPageIndex: Int?
     public var runActionsAfterTransition = true
     public var ignoreLastPage = true
-    public let scrollView = UIScrollView(frame: CGRect.zero)
+    public private(set) lazy var scrollView = UIScrollView(frame: self.bounds)
     
     private var elements = [PVElement]()
     private var allTargets = [String: UIView]()
@@ -48,11 +48,6 @@ open class PVView: UIView {
         addSubview(scrollView)
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                                     scrollView.topAnchor.constraint(equalTo: self.topAnchor),
-                                     scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                                     scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
     }
     
     public func viewForItem(by identifier: String) -> UIView? {
@@ -73,21 +68,12 @@ open class PVView: UIView {
         scroll(to: CGFloat(currentPage - 1) * pageSize(), animated: animated)
     }
     
-    
     public func reload() {
         cleanUp()
         direction = delegate.direction(of: self)
         numberOfPages = delegate.numberOfPages(in: self)
         precondition(numberOfPages >= 0, "Number of pages in PVView must be positive (current: \(numberOfPages))")
-        //TODO: Checking this one
-        self.superview?.setNeedsLayout()
-        self.superview?.layoutIfNeeded()
-        switch direction {
-        case .horizontal:
-            scrollView.contentSize = CGSize(width: CGFloat(numberOfPages) * scrollView.frame.width, height: scrollView.frame.height)
-        case .vertical:
-            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(numberOfPages) * scrollView.frame.height)
-        }
+        updateScrollContentSize()
         
         if scrollView.contentOffset == CGPoint.zero {
             update(0)
@@ -105,8 +91,29 @@ open class PVView: UIView {
         allTargets = [:]
     }
     
+    open override func layoutSubviews() {
+        if scrollView.frame != self.bounds {
+            scrollView.frame = self.bounds
+            updateScrollContentSize()
+        }
+        super.layoutSubviews()
+    }
+    
+    private func isPageIgnored(_ pageIndex: Int) -> Bool {
+        return ignoreLastPage && pageIndex == numberOfPages - 1
+    }
+    
+    private func updateScrollContentSize() {
+        switch direction {
+        case .horizontal:
+            scrollView.contentSize = CGSize(width: CGFloat(numberOfPages) * scrollView.frame.width, height: scrollView.frame.height)
+        case .vertical:
+            scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(numberOfPages) * scrollView.frame.height)
+        }
+    }
+    
     private func willBeginTransition(to pageIndex: Int) {
-        if let currentIndex = self.currentPageIndex {
+        if let currentIndex = self.currentPageIndex, !isPageIgnored(currentIndex) {
             updateActions( pageIndex > currentIndex ? 1 : 0)
         }
         
@@ -118,7 +125,7 @@ open class PVView: UIView {
             currentPageIndex = pageIndex
         }
         
-        if ignoreLastPage && pageIndex == numberOfPages - 1 {
+        if isPageIgnored(pageIndex) {
             return
         }
         
@@ -130,15 +137,8 @@ open class PVView: UIView {
                 target = delegate.parallaxview(self, viewForItem: anItem)
                 allTargets[identifier] = target!
             }
-            
             let container = delegate.parallaxView(self, containerViewForItem: anItem, onPage: pageIndex) ?? self
-            
-            if target?.superview !== container {
-                container.addSubview(target!)
-            }
-            
-            container.bringSubviewToFront(target!)
-            
+            container.addSubview(target!)
             let actions = delegate.parallaxView(self, actionsOfItem: anItem, onPage: pageIndex)
             
             return PVElement(identifier: identifier,
@@ -163,7 +163,6 @@ open class PVView: UIView {
         if numberOfPages < 1 || pageSize == 0 {
             return
         }
-        
         let pageIndex = max(min(Int(abs(offset / pageSize)), numberOfPages - 1), 0)
         let currentPageIndex = self.currentPageIndex
         if pageIndex != currentPageIndex {
@@ -175,7 +174,7 @@ open class PVView: UIView {
             }
         }
         
-        let interactivePageIndex = (ignoreLastPage && pageIndex == numberOfPages - 1) ? max(numberOfPages - 2, 0) : pageIndex
+        let interactivePageIndex = isPageIgnored(pageIndex) ? max(pageIndex - 1, 0) : pageIndex
         let pageOffset = offset - pageSize * CGFloat(interactivePageIndex)
         let pageProgress = Double(pageOffset / pageSize)
         updateActions(pageProgress)

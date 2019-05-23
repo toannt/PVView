@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1930C9BC229658FE0000BF38 /* PVTimingFunctionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1930C9BB229658FE0000BF38 /* PVTimingFunctionName.swift */; };
 		198CB73E228E792A007B79DE /* PVViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198CB72F228E792A007B79DE /* PVViewDelegate.swift */; };
 		198CB73F228E792A007B79DE /* PVActionSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198CB730228E792A007B79DE /* PVActionSize.swift */; };
 		198CB740228E792A007B79DE /* PVActionFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198CB731228E792A007B79DE /* PVActionFrame.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1930C9BB229658FE0000BF38 /* PVTimingFunctionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PVTimingFunctionName.swift; sourceTree = "<group>"; };
 		198CB72F228E792A007B79DE /* PVViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVViewDelegate.swift; sourceTree = "<group>"; };
 		198CB730228E792A007B79DE /* PVActionSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionSize.swift; sourceTree = "<group>"; };
 		198CB731228E792A007B79DE /* PVActionFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PVActionFrame.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				198CB735228E792A007B79DE /* PVItemType.swift */,
 				198CB736228E792A007B79DE /* PVParameters.swift */,
 				198CB73C228E792A007B79DE /* PVTimingFunction.swift */,
+				1930C9BB229658FE0000BF38 /* PVTimingFunctionName.swift */,
 				198CB733228E792A007B79DE /* PVTimingFunctionType.swift */,
 				198CB737228E792A007B79DE /* PVView.swift */,
 				198CB72F228E792A007B79DE /* PVViewDelegate.swift */,
@@ -186,6 +189,7 @@
 				198CB744228E792A007B79DE /* PVItemType.swift in Sources */,
 				198CB73F228E792A007B79DE /* PVActionSize.swift in Sources */,
 				198CB742228E792A007B79DE /* PVTimingFunctionType.swift in Sources */,
+				1930C9BC229658FE0000BF38 /* PVTimingFunctionName.swift in Sources */,
 				198CB73E228E792A007B79DE /* PVViewDelegate.swift in Sources */,
 				198CB745228E792A007B79DE /* PVParameters.swift in Sources */,
 				198CB748228E792A007B79DE /* PVActionType.swift in Sources */,

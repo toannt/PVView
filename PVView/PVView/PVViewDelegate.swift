@@ -26,7 +26,7 @@ public extension PVViewDelegate {
     func direction(of parallaxView: PVView) -> PVView.PVDirection {
         return .horizontal
     }
-    func parallaxView(_ parallaxView: PVView, containerViewForItem: PVItemType, onPage pageIndex: Int) -> UIView? {
+    func parallaxView(_ parallaxView: PVView, containerViewForItem item: PVItemType, onPage pageIndex: Int) -> UIView? {
         return nil
     }
     func parallaxView(_ parallaxView: PVView, willBeginTransitionTo pageIndex: Int) { }
