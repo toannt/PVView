@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         	= "PVView"
-  s.version      	= "1.0.3"
+  s.version      	= "1.0.4"
   s.summary      	= "Easier way to build a parallax view"
   s.description  	= <<-DESC
-  A small lib that helps you to build amazing parallax views
+  PVView is a small library that helps you to make an amazing parallax view.
                    	DESC
 
   s.homepage     	= "https://github.com/toannt/PVView"

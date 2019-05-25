@@ -116,6 +116,8 @@ class ActionParametersViewController: UIViewController {
     @IBOutlet weak var endSlider: UISlider!
     @IBOutlet weak var startOffsetLabel: UILabel!
     @IBOutlet weak var endOffsetLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
+    
     @IBOutlet weak var parallaxView: PVView!
     let timingFunctionRows = TimingFunctionRow.allCases
     var parameters: PVParameters = .default
@@ -194,6 +196,9 @@ extension ActionParametersViewController: PVViewDelegate {
         case .blue:
             return [PVActionScale(from: 1, to: 2, parameters: parameters)]
         }
+    }
+    func parallaxView(_ parallaxView: PVView, didUpdate pageProgress: Double, onPage pageIndex: Int) {
+        progressLabel.text = "page: \(pageIndex)" + (NSString(format: " - progress: %.2f", pageProgress) as String)
     }
 }
 

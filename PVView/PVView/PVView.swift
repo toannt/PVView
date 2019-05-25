@@ -178,6 +178,7 @@ open class PVView: UIView {
         let pageOffset = offset - pageSize * CGFloat(interactivePageIndex)
         let pageProgress = Double(pageOffset / pageSize)
         updateActions(pageProgress)
+        delegate.parallaxView(self, didUpdate: pageProgress, onPage: interactivePageIndex)
     }
     
     private func scrollOffset() -> CGFloat {

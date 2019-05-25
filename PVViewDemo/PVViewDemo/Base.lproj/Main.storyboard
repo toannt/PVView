@@ -226,6 +226,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2o-S0-JOy">
+                                <rect key="frame" x="207" y="559" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.24716844234702484" green="0.83080298803462393" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -245,12 +251,14 @@
                             <constraint firstItem="yjg-Vc-ma7" firstAttribute="trailing" secondItem="F0A-T2-WgJ" secondAttribute="trailing" id="ewK-zJ-ssV"/>
                             <constraint firstItem="tJa-yJ-xGj" firstAttribute="leading" secondItem="yjg-Vc-ma7" secondAttribute="leading" constant="16" id="fo6-Li-jTS"/>
                             <constraint firstItem="xqF-pd-mQ8" firstAttribute="top" secondItem="yjg-Vc-ma7" secondAttribute="top" id="gFF-pO-7VK"/>
+                            <constraint firstItem="g2o-S0-JOy" firstAttribute="centerX" secondItem="x6I-5M-hkb" secondAttribute="centerX" id="gGZ-zW-QZV"/>
                             <constraint firstItem="mDj-hj-2aN" firstAttribute="leading" secondItem="08B-kw-n4N" secondAttribute="trailing" constant="32" id="hgF-lt-ZHe"/>
                             <constraint firstItem="sKx-5E-KSz" firstAttribute="top" secondItem="Xh4-eC-B6n" secondAttribute="bottom" constant="8" id="jUd-NQ-re2"/>
                             <constraint firstItem="tJa-yJ-xGj" firstAttribute="centerY" secondItem="rrd-gX-f0o" secondAttribute="centerY" id="k1D-V4-4gR"/>
                             <constraint firstItem="sKx-5E-KSz" firstAttribute="trailing" secondItem="yjg-Vc-ma7" secondAttribute="trailing" id="o5S-Lw-EBl"/>
                             <constraint firstItem="Xh4-eC-B6n" firstAttribute="leading" secondItem="yjg-Vc-ma7" secondAttribute="leading" constant="16" id="ol4-aN-eA7"/>
                             <constraint firstItem="rrd-gX-f0o" firstAttribute="leading" secondItem="mDj-hj-2aN" secondAttribute="leading" id="r9Q-KV-drf"/>
+                            <constraint firstItem="g2o-S0-JOy" firstAttribute="bottom" secondItem="xqF-pd-mQ8" secondAttribute="bottom" constant="-16" id="uHF-HG-XsW"/>
                             <constraint firstItem="yjg-Vc-ma7" firstAttribute="trailing" secondItem="xqF-pd-mQ8" secondAttribute="trailing" id="w4Q-K0-Gyh"/>
                             <constraint firstItem="sEl-VF-EBf" firstAttribute="width" secondItem="F0A-T2-WgJ" secondAttribute="width" id="yAh-qv-IrB"/>
                         </constraints>
@@ -260,6 +268,7 @@
                         <outlet property="endOffsetLabel" destination="F0A-T2-WgJ" id="jvl-Rl-f4t"/>
                         <outlet property="endSlider" destination="mDj-hj-2aN" id="aMa-DO-laS"/>
                         <outlet property="parallaxView" destination="xqF-pd-mQ8" id="Z3c-Jl-9jb"/>
+                        <outlet property="progressLabel" destination="g2o-S0-JOy" id="zZ0-in-obO"/>
                         <outlet property="startOffsetLabel" destination="sEl-VF-EBf" id="WCt-Jr-uY1"/>
                         <outlet property="startSlider" destination="rrd-gX-f0o" id="Ya5-ED-J9j"/>
                         <outlet property="timingPicker" destination="sKx-5E-KSz" id="2Ez-lR-6pr"/>
@@ -323,6 +332,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="670"/>
                                 <color key="backgroundColor" red="1" green="0.88627450980392153" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ox-9u-3Jl">
+                                <rect key="frame" x="207" y="698" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65650168002613629" blue="0.82137858013052156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -334,16 +349,19 @@
                             <constraint firstItem="cUO-rE-FjQ" firstAttribute="bottom" secondItem="mQR-Es-2be" secondAttribute="bottom" constant="50" id="GlT-Ve-y7o"/>
                             <constraint firstItem="COv-Aw-eBp" firstAttribute="top" secondItem="cUO-rE-FjQ" secondAttribute="top" id="RyL-AQ-tEn"/>
                             <constraint firstItem="2xq-NH-pqq" firstAttribute="centerY" secondItem="20u-aP-Yna" secondAttribute="centerY" id="VGY-nR-OoO"/>
+                            <constraint firstItem="5ox-9u-3Jl" firstAttribute="bottom" secondItem="COv-Aw-eBp" secondAttribute="bottom" constant="-16" id="ZPj-aT-nMC"/>
                             <constraint firstItem="20u-aP-Yna" firstAttribute="top" secondItem="COv-Aw-eBp" secondAttribute="bottom" constant="16" id="ZvH-SH-tOg"/>
                             <constraint firstItem="COv-Aw-eBp" firstAttribute="leading" secondItem="cUO-rE-FjQ" secondAttribute="leading" id="fTA-RG-UtB"/>
                             <constraint firstItem="COv-Aw-eBp" firstAttribute="trailing" secondItem="cUO-rE-FjQ" secondAttribute="trailing" id="szU-s1-Ct5"/>
                             <constraint firstItem="mQR-Es-2be" firstAttribute="top" secondItem="20u-aP-Yna" secondAttribute="bottom" constant="20" id="u58-Pg-MO8"/>
+                            <constraint firstItem="5ox-9u-3Jl" firstAttribute="centerX" secondItem="KSV-K6-BK0" secondAttribute="centerX" id="xtm-SU-vFV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cUO-rE-FjQ"/>
                     </view>
                     <connections>
                         <outlet property="ignoreLastPageSwitch" destination="mQR-Es-2be" id="L4j-du-7vH"/>
                         <outlet property="parallaxView" destination="COv-Aw-eBp" id="zY2-ak-bNu"/>
+                        <outlet property="progressLabel" destination="5ox-9u-3Jl" id="qJ1-Q3-rjU"/>
                         <outlet property="runActionsAfterTransitionSwitch" destination="20u-aP-Yna" id="YJf-lJ-Ed3"/>
                     </connections>
                 </viewController>

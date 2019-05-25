@@ -20,6 +20,7 @@ public protocol PVViewDelegate: AnyObject {
     func parallaxView(_ parallaxView: PVView, containerViewForItem item: PVItemType, onPage pageIndex: Int) -> UIView?
     func parallaxView(_ parallaxView: PVView, willBeginTransitionTo pageIndex: Int)
     func parallaxView(_ parallaxView: PVView, didEndTransitionFrom previousPageIndex: Int?)
+    func parallaxView(_ parallaxView: PVView, didUpdate pageProgress: Double, onPage pageIndex: Int)
 }
 
 public extension PVViewDelegate {
@@ -31,4 +32,5 @@ public extension PVViewDelegate {
     }
     func parallaxView(_ parallaxView: PVView, willBeginTransitionTo pageIndex: Int) { }
     func parallaxView(_ parallaxView: PVView, didEndTransitionFrom previousPageIndex: Int?) { }
+    func parallaxView(_ parallaxView: PVView, didUpdate pageProgress: Double, onPage pageIndex: Int) { }
 }

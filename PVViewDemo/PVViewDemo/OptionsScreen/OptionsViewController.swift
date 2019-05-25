@@ -20,6 +20,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var parallaxView: PVView!
     @IBOutlet weak var runActionsAfterTransitionSwitch: UISwitch!
     @IBOutlet weak var ignoreLastPageSwitch: UISwitch!
+    @IBOutlet weak var progressLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,5 +59,8 @@ extension OptionsViewController: PVViewDelegate {
         }
         
         return []
+    }
+    func parallaxView(_ parallaxView: PVView, didUpdate pageProgress: Double, onPage pageIndex: Int) {
+        progressLabel.text = "page: \(pageIndex)" + (NSString(format: " - progress: %.2f", pageProgress) as String)
     }
 }
