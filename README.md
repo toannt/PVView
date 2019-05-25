@@ -12,7 +12,7 @@
     * [Timing function](#timing-function)
     * [Action group](#action-group)
     * [Reverse a sequence of actions](#reverse-a-sequence-of-actions)
-    * [Relative point & size](#relative-point-&-size)
+    * [Relative point and size](#relative-point-and-size)
 * [Customization](#customization)
     * [Customize action](#customize-action)
     * [Customize timing function](#customize-timing-function)
@@ -168,7 +168,7 @@ public extension Sequence where Element: PVActionBasicType {
     }
 }
 ```
-#### Relative point & size
+#### Relative point and size
 You can create an action with relative points using `PVPoint`, absolute point will be calculated base on size of the container view
 ```swift
 PVActionMove(fromPosition: PVPoint(x: 2, y: 0.2, isRelative: true)
