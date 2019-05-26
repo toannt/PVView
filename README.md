@@ -1,7 +1,4 @@
-# PVView
-`PVView` is a small library that helps you to make an amazing parallax view.
-
-![](Assets/demo.gif)
+![Onboarding demo](Assets/demo.gif)
 
 * [Installation](#installation)
 * [Requirements](#requirements)
